@@ -37,7 +37,7 @@ function App() {
           </button>
         </a>
         <input
-          onChange={(e) => setText(e.target.value.trim())}
+          onChange={(e) => setText(e.target.value)}
           value={text}
           type="text"
           className="w-full border-2 border-gray-200 px-3 py-1.5 rounded focus:outline-none font-normal placeholder:font-medium text-black"
