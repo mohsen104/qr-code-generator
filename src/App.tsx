@@ -24,7 +24,13 @@ function App() {
           style={{ backgroundColor: light }}
           className="rounded border-2 border-gray-200 w-full h-[180px] flex items-center justify-center"
         >
-          <img src={image} className="w-[170px] h-[170px]" />
+          {!!text.trim().length ? (
+            <img src={image} className="w-[170px] h-[170px]" />
+          ) : (
+            <div className="w-full h-[170px] flex items-center justify-center text-center text-red-600">
+              <p>Please enter a valid input.</p>
+            </div>
+          )}
         </div>
         <a
           href={image}
@@ -32,7 +38,10 @@ function App() {
           target="_blank"
           className="w-full"
         >
-          <button className="border-2 border-blue-500 bg-blue-500 text-white rounded px-2 py-1 w-full">
+          <button
+            disabled={!text.trim().length}
+            className="border-2 border-blue-500 bg-blue-500 text-white rounded px-2 py-1 w-full disabled:opacity-50"
+          >
             Download
           </button>
         </a>
@@ -78,8 +87,8 @@ function App() {
             </option>
           </select>
         </div>
-        <div className="flex items-center gap-4 w-full">
-          <p className="text-sm">Foreground :</p>
+        <div className="flex items-center w-full">
+          <p className="text-sm w-24">Foreground :</p>
           <input
             type="color"
             value={dark}
@@ -87,8 +96,8 @@ function App() {
             className="cursor-pointer w-10 h-6"
           />
         </div>
-        <div className="flex items-center gap-4 w-full">
-          <p className="text-sm">Background :</p>
+        <div className="flex items-center w-full">
+          <p className="text-sm w-24">Background :</p>
           <input
             type="color"
             value={light}
